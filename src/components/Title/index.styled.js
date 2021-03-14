@@ -1,10 +1,31 @@
 import styled from 'styled-components';
 
-export const TitleStyled = styled.div`
+export const TextStyled = styled.p`
+  color: ${(props) => (props.isActive ? '#5A57CB' : '#6a7988')};
+`;
+
+export const TitleStyled = styled(TextStyled)`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 10px;
   line-height: 14px;
+`;
 
-  color: ${(props) => (props.isToday ? '#5A57CB' : '#6a7988')};
+export const SubTitleStyled = styled(TextStyled)`
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 15px;
+`;
+
+export const WorkoutTitle = styled(TextStyled)`
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 15px;
+
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

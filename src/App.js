@@ -1,5 +1,5 @@
 import './App.css';
-import Workout from './components/Workout';
+import Column from './components/Column';
 import { getDateOfWeek } from './utils/getDate';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       {dateOfWeek.map((item) => {
         const { dayName, date, isToday } = item;
         return (
-          <Workout key={dayName} day={dayName} date={date} isToday={isToday} />
+          <Column key={dayName} day={dayName} date={date} isToday={isToday} />
         );
       })}
     </div>

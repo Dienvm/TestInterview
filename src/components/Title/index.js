@@ -1,7 +1,7 @@
 import { TitleStyled } from './index.styled';
 
-const Title = ({ title, isToday }) => (
-  <TitleStyled isToday={isToday}>{title}</TitleStyled>
+const Title = ({ title, isActive }) => (
+  <TitleStyled isActive={isActive}>{title}</TitleStyled>
 );
 
 export default Title;
