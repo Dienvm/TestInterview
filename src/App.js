@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Workout from './components/Workout';
+import { getDateOfWeek } from './utils/getDate';
 
 function App() {
+  const dateOfWeek = getDateOfWeek();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      {dateOfWeek.map((item) => {
+        const { dayName, date, isToday } = item;
+        return (
+          <Workout key={dayName} day={dayName} date={date} isToday={isToday} />
+        );
+      })}
     </div>
   );
 }
