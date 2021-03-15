@@ -1,20 +1,41 @@
-import Title from '../Title';
-import ColumnContent from '../ColumnContent';
-import { Container } from './index.styled';
+import { Droppable } from "react-beautiful-dnd";
+import Title from "../Title";
+import ColumnContent from "../ColumnContent";
+import { Container } from "./index.styled";
 
-const Column = ({ id, dayName, date, isToday, workouts }) => {
+const Column = ({ col: { id, dayName, date, isToday, workouts } }) => {
   return (
-    <Container>
-      <Title title={id} />
+    <Droppable droppableId={id}>
+      {(provided) => (
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Title title={id} />
 
-      <ColumnContent
-        id={id}
-        dayName={dayName}
-        date={date}
-        isToday={isToday}
-        workouts={workouts}
-      />
-    </Container>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: "120px",
+            }}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            <ColumnContent
+              id={id}
+              dayName={dayName}
+              date={date}
+              isToday={isToday}
+              workouts={workouts}
+            />
+            {provided.placeholder}
+          </div>
+        </Container>
+      )}
+    </Droppable>
   );
 };
 

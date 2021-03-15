@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { colors } from "../../themes/colors";
 
 export const Container = styled.div`
   background: #ffffff;
@@ -42,7 +43,7 @@ export const InfoContent = styled.div`
   line-height: 14px;
   text-align: right;
 
-  color: #95a6b7;
+  color: ${colors.secondary};
 `;
 
 export const InputTitle = styled.input`
@@ -59,7 +60,7 @@ export const ButtonStyled = styled.button`
   padding: 5px;
   margin-top: 5px;
   background-color: ${(props) =>
-    props.type === 'primary' ? '#5A57CB' : '#919CAD'};
+    props.type === "primary" ? colors.primary : "#919CAD"};
 
   color: #fff;
   font-size: 10px;

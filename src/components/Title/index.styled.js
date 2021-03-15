@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { colors } from "../../themes/colors";
 
 export const TextStyled = styled.p`
-  color: ${(props) => (props.isActive ? '#5A57CB' : '#6a7988')};
+  color: ${(props) => (props.isActive ? colors.primary : "#6a7988")};
 `;
 
 export const TitleStyled = styled(TextStyled)`

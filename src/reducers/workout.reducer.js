@@ -1,7 +1,7 @@
-import { MAPPING_WORKOUTS_DATA, ADD_NEW_EXERCISE } from '../actions';
-import { WORKOUTS } from '../constants/stub-data';
-import { getDateOfWeek } from '../utils/getDate';
-import { generateGUID } from '../utils/helpers';
+import { MAPPING_WORKOUTS_DATA, ADD_NEW_EXERCISE } from "../actions";
+import { WORKOUTS } from "../constants/stub-data";
+import { getDateOfWeek } from "../utils/getDate";
+import { generateGUID } from "../utils/helpers";
 
 const initialState = {
   data: [],
@@ -13,14 +13,13 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case MAPPING_WORKOUTS_DATA: {
       const dateOfWeek = getDateOfWeek();
+      const result = {};
 
-      const result = Object.values(WORKOUTS).map((workout) => {
-        if (workout.id === dateOfWeek[workout.id].dayName.toLowerCase()) {
-          workout = { ...workout, ...dateOfWeek[workout.id] };
-        }
-
-        return workout;
-      });
+      for (let index = 0; index < Object.keys(WORKOUTS).length; index++) {
+        const element = Object.keys(WORKOUTS)[index];
+        const newData = { ...WORKOUTS[element], ...dateOfWeek[element] };
+        result[element] = newData;
+      }
 
       return {
         ...state,
