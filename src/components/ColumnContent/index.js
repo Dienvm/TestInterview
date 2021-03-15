@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { WORKOUTS } from '../../constants/stub-data';
 import { SubTitleStyled } from '../Title/index.styled';
 import {
   Container,
@@ -15,17 +13,14 @@ import Title from '../Title';
 // images
 import MenuIcon from '../../assets/icons/menu.png';
 import AddIcon from '../../assets/icons/add.png';
+import { useState } from 'react';
+import NewExercise from '../Exercises/NewExercises';
 
-const ColumnContent = ({ date, isToday, day }) => {
-  const [workouts, setWorkouts] = useState([]);
-  useEffect(() => {
-    const data = WORKOUTS.find((item) => item.id === day);
-    !!data && setWorkouts(data.workouts);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+const ColumnContent = ({ id, date, isToday, dayName, workouts }) => {
+  const [currentId, setCurrentId] = useState('');
 
-  const handleAddExercise = () => {
-    // TODO:
+  const handleAddExercise = (id) => {
+    setCurrentId(id);
   };
 
   return (
@@ -43,12 +38,24 @@ const ColumnContent = ({ date, isToday, day }) => {
             </Row>
 
             {workout.exercises.map((exercise) => (
-              <Exercises id={exercise.id} exercise={exercise} />
+              <Exercises key={exercise.id} exercise={exercise} />
             ))}
 
-            <ImageWrapper>
-              <AddImage src={AddIcon} alt='add' onClick={handleAddExercise} />
-            </ImageWrapper>
+            {currentId === workout.id ? (
+              <NewExercise
+                setCurrentId={setCurrentId}
+                workoutId={workout.id}
+                id={id}
+              />
+            ) : (
+              <ImageWrapper>
+                <AddImage
+                  src={AddIcon}
+                  alt='add'
+                  onClick={() => handleAddExercise(workout.id)}
+                />
+              </ImageWrapper>
+            )}
           </WorkoutContainer>
         ))}
     </Container>

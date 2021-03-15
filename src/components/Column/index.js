@@ -2,12 +2,18 @@ import Title from '../Title';
 import ColumnContent from '../ColumnContent';
 import { Container } from './index.styled';
 
-const Column = ({ day, date, isToday }) => {
+const Column = ({ id, dayName, date, isToday, workouts }) => {
   return (
     <Container>
-      <Title title={day} />
+      <Title title={id} />
 
-      <ColumnContent day={day} date={date} isToday={isToday} />
+      <ColumnContent
+        id={id}
+        dayName={dayName}
+        date={date}
+        isToday={isToday}
+        workouts={workouts}
+      />
     </Container>
   );
 };

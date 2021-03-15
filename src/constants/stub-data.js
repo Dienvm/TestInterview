@@ -1,6 +1,10 @@
-export const WORKOUTS = [
-  {
-    id: 'Tue',
+export const WORKOUTS = {
+  mon: {
+    id: 'mon',
+    workouts: [],
+  },
+  tue: {
+    id: 'tue',
     workouts: [
       {
         id: 'tue-arm',
@@ -20,8 +24,8 @@ export const WORKOUTS = [
       },
     ],
   },
-  {
-    id: 'Wed',
+  wed: {
+    id: 'wed',
     workouts: [
       {
         id: 'wed-leg',
@@ -57,4 +61,20 @@ export const WORKOUTS = [
       },
     ],
   },
-];
+  thu: {
+    id: 'thu',
+    workouts: [],
+  },
+  fri: {
+    id: 'fri',
+    workouts: [],
+  },
+  sat: {
+    id: 'sat',
+    workouts: [],
+  },
+  sun: {
+    id: 'sun',
+    workouts: [],
+  },
+};

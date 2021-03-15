@@ -11,7 +11,7 @@ const getMonday = (date) => {
  */
 export const getDateOfWeek = () => {
   let curr = getMonday(new Date());
-  let week = [];
+  let week = {};
   const days = [
     'Sunday',
     'Monday',
@@ -36,7 +36,9 @@ export const getDateOfWeek = () => {
     const d = new Date(day);
     const dayName = days[d.getDay()].slice(0, 3);
 
-    week.push({ date, dayName, isToday: currentDate === day });
+    const result = { date, dayName, isToday: currentDate === day };
+
+    week[`${dayName.toLowerCase()}`] = result;
   }
 
   return week;

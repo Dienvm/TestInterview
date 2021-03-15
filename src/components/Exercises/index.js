@@ -1,7 +1,6 @@
 import { Container, Title, SubTitle, Row, InfoContent } from './index.styled';
 
 const Exercises = ({ exercise }) => {
-  console.log('exercise', exercise);
   const { name, info } = exercise;
   return (
     <Container>
