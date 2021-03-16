@@ -1,14 +1,23 @@
-import { Container, Title, SubTitle, Row, InfoContent } from './index.styled';
+import {
+  Container,
+  Title,
+  SubTitle,
+  Row,
+  InfoContent,
+  Wrap,
+} from "./index.styled";
 
 const Exercises = ({ exercise }) => {
   const { name, info } = exercise;
   return (
     <Container>
-      <Title>{name}</Title>
+      <Wrap>
+        <Title>{name}</Title>
+      </Wrap>
 
       <Row>
         <SubTitle>{info.length}x</SubTitle>
-        <InfoContent>{info.join(' x ')}</InfoContent>
+        <InfoContent>{info.join(" x ")}</InfoContent>
       </Row>
     </Container>
   );

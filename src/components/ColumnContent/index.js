@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { SubTitleStyled } from "../Title/index.styled";
 import {
@@ -14,7 +15,6 @@ import Title from "../Title";
 // images
 import MenuIcon from "../../assets/icons/menu.png";
 import AddIcon from "../../assets/icons/add.png";
-import { useState } from "react";
 import NewExercise from "../Exercises/NewExercises";
 
 const ColumnContent = ({ id, date, isToday, dayName, workouts }) => {
@@ -31,7 +31,7 @@ const ColumnContent = ({ id, date, isToday, dayName, workouts }) => {
       {workouts &&
         workouts.length > 0 &&
         workouts.map((workout, index) => (
-          <Draggable draggableId={workout.name} index={index}>
+          <Draggable key={workout.id} draggableId={workout.name} index={index}>
             {(provided) => (
               <div
                 ref={provided.innerRef}

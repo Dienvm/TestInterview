@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 70vh;
+  height: 85vh;
   background: #f3f5f8;
   opacity: 0.8;
   border-radius: 6px;

@@ -1,7 +1,7 @@
 import { Droppable } from "react-beautiful-dnd";
 import Title from "../Title";
 import ColumnContent from "../ColumnContent";
-import { Container } from "./index.styled";
+import { Container, Wrap } from "./index.styled";
 
 const Column = ({ col: { id, dayName, date, isToday, workouts } }) => {
   return (
@@ -15,15 +15,7 @@ const Column = ({ col: { id, dayName, date, isToday, workouts } }) => {
         >
           <Title title={id} />
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              minHeight: "120px",
-            }}
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <Wrap {...provided.droppableProps} ref={provided.innerRef}>
             <ColumnContent
               id={id}
               dayName={dayName}
@@ -32,7 +24,7 @@ const Column = ({ col: { id, dayName, date, isToday, workouts } }) => {
               workouts={workouts}
             />
             {provided.placeholder}
-          </div>
+          </Wrap>
         </Container>
       )}
     </Droppable>

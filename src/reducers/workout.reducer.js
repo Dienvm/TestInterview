@@ -28,30 +28,20 @@ export default function (state = initialState, action) {
     }
     case ADD_NEW_EXERCISE: {
       const { fields, id, workoutId } = action.payload;
-      const cloneData = [...state.data];
-      const result =
-        cloneData.length > 0 &&
-        cloneData.map((item) => {
-          if (item.id === id) {
-            item.workouts.length > 0 &&
-              item.workouts.map((workout) => {
-                workout.id === workoutId &&
-                  workout.exercises.push({
-                    id: generateGUID(),
-                    name: fields.name,
-                    info: [fields.info],
-                  });
+      const currentWorkout = state.data[id].workouts;
 
-                return workout;
-              });
-          }
-
-          return item;
-        });
+      for (let index = 0; index < currentWorkout.length; index++) {
+        const workout = currentWorkout[index];
+        if (workout.id === workoutId)
+          workout.exercises.push({
+            id: generateGUID(),
+            name: fields.name,
+            info: [fields.info],
+          });
+      }
 
       return {
         ...state,
-        data: result,
       };
     }
     default:

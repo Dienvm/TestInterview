@@ -12,6 +12,11 @@ export const Container = styled.div`
   margin-top: 5px;
 `;
 
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 export const Title = styled.p`
   font-weight: 600;
   font-size: 13px;
@@ -19,6 +24,10 @@ export const Title = styled.p`
   text-align: right;
 
   padding-left: 24px;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const SubTitle = styled.p`
@@ -44,6 +53,10 @@ export const InfoContent = styled.div`
   text-align: right;
 
   color: ${colors.secondary};
+  width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const InputTitle = styled.input`

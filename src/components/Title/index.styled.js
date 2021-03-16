@@ -10,6 +10,11 @@ export const TitleStyled = styled(TextStyled)`
   font-weight: 600;
   font-size: 10px;
   line-height: 14px;
+
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const SubTitleStyled = styled(TextStyled)`

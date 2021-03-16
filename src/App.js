@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
 
 import Column from "./components/Column";
 import { DragDropContext } from "react-beautiful-dnd";
+import { AppContainer } from "./themes/styled";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +20,6 @@ function App() {
   }, [data]);
 
   const onDragEnd = ({ source, destination }) => {
-    // debugger;
     // Make sure we have a valid destination
     if (destination === undefined || destination === null) return null;
 
@@ -38,17 +37,19 @@ function App() {
 
     // If start is the same as end, we're in the same column
     if (start === end) {
-      // Move the item within the list
-      // Start by making a new list without the dragged item
-      const newList = start.list.filter((_, idx) => idx !== source.index);
+      // Move the item within the workouts
+      // Start by making a new workouts without the dragged item
+      const newWorkouts = start.workouts.filter(
+        (_, idx) => idx !== source.index
+      );
 
       // Then insert the item at the right location
-      newList.splice(destination.index, 0, start.list[source.index]);
+      newWorkouts.splice(destination.index, 0, start.workouts[source.index]);
 
       // Then create a new copy of the column object
       const newCol = {
-        id: start.id,
-        list: newList,
+        ...start,
+        workouts: newWorkouts,
       };
 
       // Update the state
@@ -67,10 +68,10 @@ function App() {
         workouts: newStartWorkouts,
       };
 
-      // Make a new end list array
+      // Make a new end workouts array
       const newEndWorkouts = end.workouts;
 
-      // Insert the item into the end list
+      // Insert the item into the end workouts
       newEndWorkouts.splice(destination.index, 0, start.workouts[source.index]);
 
       // Create a new end column
@@ -91,12 +92,12 @@ function App() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="container">
+      <AppContainer>
         {Object.keys(columns).length > 0 &&
           Object.keys(columns).map((col) => {
             return <Column col={columns[col]} key={columns[col].id} />;
           })}
-      </div>
+      </AppContainer>
     </DragDropContext>
   );
 }
